@@ -20,10 +20,8 @@ function createcard(list){
     parag.innerText=list.descrition
     modalidade1.innerText=list.modalities[0]
     modalidade1.classList.add('modalidade')
-   // modalidade1.dataset.id=list.id
     modalidade2.innerText=list.modalities[1]
     modalidade2.classList.add('modalidade')
-   // modalidade2.dataset.id=list.id
     cadidatar.innerText= 'Candidatar'
     cadidatar.classList.add('candidatar')
     cadidatar.dataset.id = list.id
@@ -48,21 +46,60 @@ function rederAside(array){
     const asideContainer = document.querySelector('.aside_container');
     const divcards = document.querySelector('.div_container');
 
+      divcards.innerHTML = ''
+
+      if(newList.length <= 0){
+         createEmptyAside()
+        
+      }
+      else{
        array.forEach( list => {
         const item = createCadAside(list)
 
         divcards.appendChild(item)
 
     })
+  }
 }
 
+function removerAside(array){
+    const removerbtns = document.querySelectorAll('.remover');
 
+    removerbtns.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const listInAside = array.find(list => {
+                return list.newListId === Number(e.target.dataset.newListId)
+            })
+
+            const listIndex = array.indexOf(listInAside)
+
+            array.splice(listIndex, 1)
+        })
+    })
+
+
+}
+
+function createEmptyAside(){
+    const Container = document.querySelector('div');
+    const titleH2 = document.createElement('h2');
+    const msgP = document.createElement('p')
+    
+    Container.classList.add('div_container1')
+    titleH2.innerText = 'Vagas selecionadas'
+    msgP.innerText = 'Você ainda não aplicou para nenhuma vaga'
+    
+    Container.appendChild(titleH2, msgP)
+    return Container
+
+
+}
 function createCadAside(list){
     const divcad = document.createElement('div')
     const titleH2 = document.createElement('h2');
     const enterpriseH3 = document.createElement('h3');
     const locationH4 = document.createElement('h4');
-    const buttonRemover = document.createElement('button');
+    const buttonRemover = document.createElement('img');
 
     titleH2.innerText=list.title
     enterpriseH3.innerText=list.enterprise
@@ -99,3 +136,5 @@ function addTocart(){
 }
 rederAside(newList)
 redercards(jobsData)
+createCadAside(jobsData)
+addTocart()
