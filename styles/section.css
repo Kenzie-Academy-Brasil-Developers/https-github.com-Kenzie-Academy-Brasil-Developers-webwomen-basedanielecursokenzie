@@ -41,7 +41,7 @@ section > ul > li > h4{
 }
 section > ul > li > p{
     color: var(--color-grey-2);
-    line-height: 40px;
+    line-height: 30px;
     font-size: var(--text-2);
     font-weight: 400;
     font-style: normal;
@@ -76,40 +76,51 @@ section > ul > li > p{
         margin: 1.5rem;
         padding: 2rem;
         gap: 2rem;
-        width: 740px;
-        height: 410px;
+        width: 490px;
+        height: 250px;
         list-style: none;
         margin-left: -25px;
         background-color: var(--color-grey-6);
     }
     section > ul > li > h2{
         color: var(--color-grey-1);
-        line-height: 30px;
-        font-size: var(--title-3);
+        font-size: var(--title-6);
+        margin-top: -20px;
     }
     section > ul > li > h3{
         color: var(--color-grey-2);
-        font-size: var(--text-1);
-        line-height: 30px;
-        margin-top: 20px;
+        font-size: var(--text-4);
+        margin-top: 0;
     
     }
     section > ul > li > h4{
         color: var(--color-grey-2);
-        font-size: var(--text-1);
+        font-size: var(--text-4);
         margin-top: -30px;
         margin-left: 190px;
-        line-height: 30px;
         
     }
     section > ul > li > p{
         color: var(--color-grey-2);
-        line-height: 40px;
-        font-size: var(--text-2);
+        line-height: 22px;
+        font-size: var(--text-4);
         font-weight: 400;
         font-style: normal;
-        margin-top: 30px;
-        width: 100%
+        margin-top: 10px;
+        width: 100%;
+    }
+    .modalidade{
+        background-color: var(--color-grey-3);
+        color: var(--color-grey-2);
+        font-size: var(--text-4);
+        margin: 10px;
+        height: 35px;
+        padding: 0.625rem;
+    }
+    .candidatar{
+        width: 180px;
+        height: 44px;
+        margin: 30px;
     }
 
 }

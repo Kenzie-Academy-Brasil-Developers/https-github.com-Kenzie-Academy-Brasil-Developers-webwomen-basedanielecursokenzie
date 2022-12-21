@@ -1,3 +1,11 @@
+function WeblocalStorage(){
+
+    const chaves = JSON.parse(localStorage.getItem("candidatos")) || []
+
+    return chaves
+   
+}
+
 const ul = document.querySelector('.ul_container');
 
 function createcard(list){
@@ -7,9 +15,10 @@ function createcard(list){
     const h3 = document.createElement('h3');
     const h4 = document.createElement('h4')
     const parag = document.createElement('p');
+    const divbuttos = document.createElement('div')
     const modalidade1 = document.createElement('button');
     const modalidade2 = document.createElement('button');
-    const cadidatar = document.createElement('button');
+    const candidatar = document.createElement('button');
 
     li.classList.add('posts_container');
 
@@ -22,11 +31,24 @@ function createcard(list){
     modalidade1.classList.add('modalidade')
     modalidade2.innerText=list.modalities[1]
     modalidade2.classList.add('modalidade')
-    cadidatar.innerText= 'Candidatar'
-    cadidatar.classList.add('candidatar')
-    cadidatar.dataset.id = list.id
 
-    li.append(h2, h3, h4, parag, modalidade1, modalidade2, cadidatar);
+    const verificar = newList.find(el => el.id == list.id)
+
+
+
+    if(verificar){
+        candidatar.innerText = 'remover candidatura'
+        
+    }
+    else{
+        candidatar.innerText= 'Candidatar'
+        
+    }
+
+    candidatar.classList.add('candidatar')
+    candidatar.dataset.id = list.id
+
+    li.append(h2, h3, h4, parag, modalidade1, modalidade2, candidatar);
     ul.appendChild(li)
 
     
@@ -48,9 +70,9 @@ function rederAside(array){
 
       divcards.innerHTML = ''
 
-      if(newList.length <= 0){
-         createEmptyAside()
-        
+      if(WeblocalStorage().length <= 0){
+        const createempty = createEmptyAside()
+
       }
       else{
        array.forEach( list => {
@@ -60,11 +82,13 @@ function rederAside(array){
 
     })
   }
+
+  removerAside(newList)
+  
 }
 
 function removerAside(array){
     const removerbtns = document.querySelectorAll('.remover');
-
     removerbtns.forEach(button => {
         button.addEventListener('click', (e) => {
             const listInAside = array.find(list => {
@@ -74,6 +98,13 @@ function removerAside(array){
             const listIndex = array.indexOf(listInAside)
 
             array.splice(listIndex, 1)
+
+            localStorage.setItem("candidatos", JSON.stringify(array))
+
+            const listas = WeblocalStorage(newList)
+
+            rederAside(listas)
+
         })
     })
 
@@ -82,14 +113,14 @@ function removerAside(array){
 
 function createEmptyAside(){
     const Container = document.querySelector('div');
-    const titleH2 = document.createElement('h2');
-    const msgP = document.createElement('p')
+    const msgP = document.createElement('p');
     
-    Container.classList.add('div_container1')
-    titleH2.innerText = 'Vagas selecionadas'
+    Container.classList.add('div_container1');
+
     msgP.innerText = 'Você ainda não aplicou para nenhuma vaga'
     
-    Container.appendChild(titleH2, msgP)
+    Container.append(msgP)
+
     return Container
 
 
@@ -121,20 +152,33 @@ function addTocart(){
         button.addEventListener('click', (event) => {
             const listfound = jobsData.find(list => {
                 return list.id === Number(event.target.dataset.id)
+
     
             })
+
+    
             const listTocart = {
                 ...listfound,
                 newListId: createCadAside.length + 1  
             }
 
+
             newList.push(listTocart)
 
-            rederAside(newList)
+
+           localStorage.setItem("candidatos", JSON.stringify(newList))
+
+           const listas = WeblocalStorage()
+
+           rederAside(listas)
+
+
         })
+
     })
+    
 }
-rederAside(newList)
+rederAside(WeblocalStorage())
 redercards(jobsData)
 createCadAside(jobsData)
 addTocart()

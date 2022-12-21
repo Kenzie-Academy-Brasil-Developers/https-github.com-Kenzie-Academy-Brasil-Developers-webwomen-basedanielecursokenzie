@@ -5,6 +5,7 @@
     gap: 2rem;
     margin: 10px;
     padding: 10px;
+    overflow: auto;
 
 }
 aside > h2{
@@ -14,36 +15,184 @@ aside > h2{
     margin-left: 30px;
 
 }
-aside > p{
+aside > div > div > p{
     color: var(--color-grey-2);
     line-height: 50px;
     width: 80%;
     margin-top: 90px;
     margin-left: 50px;
 }
+div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 15px;
+    gap: 10px;
+    background-color: var(--color-grey-6);
+    box-sizing: border-box;
+    border-bottom: 2px solid #F1F3F5;
+}
+h2{
+    color: var(--color-grey-1);
+    line-height: 30px;
+    font-size: var(--title-6);
+    width: 80%;
+}
+h3{
+    color: var(--color-grey-1);
+    line-height: 30px;
+    font-size: var(--text-4);
+    width: 30%;
+
+}
+h4{
+    color: var(--color-grey-1);
+    line-height: 30px;
+    font-size: var(--text-4);
+    margin-top: -30px;
+    margin-left: 150px;
+    width: 30%;
+}
+img{
+    margin-left: 300px;
+    margin-top: -100px;
+    width: 18px;
+}
 @media(min-width: 768px){
     .aside_container{
-        width: 740px;
-        height: 410px;
         background-color: var(--color-grey-6);
-        gap: 2rem;
-        margin: 20px;
-        padding: 10px;
+        width: 260px;
+        height: 100%;
+        margin-top: -1685px;
+        margin-left: 510px;
+        overflow-y: auto;
+        overflow-x: none;
     
     }
     aside > h2{
         color: var(--color-grey-1);
-        font-size: var(--title-2);
-        margin-top: 10px;
-        margin-left: 30px;
+        font-size: var(--title-6);
+        margin-top: 20px;
+        margin-left: 15px;
+        background-color: var(--color-grey-6);
+        width: 220px;
+        height: 30px;
     
     }
-    aside > p{
+    aside > div > p{
+        color: var(--color-grey-1);
+        font-size: 8px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin: 15px;
+        gap: 10px;
+        background-color: var(--color-grey-6);
+        box-sizing: border-box;
+        border-bottom: 2px solid #F1F3F5;
+    }
+    h2{
+        font-size: var(--text-4);
+        color: var(--color-grey-1);
+        line-height: 20px;
+
+    }
+    h3{
+        color: var(--color-grey-1);
+        font-size: var(--text-4);
+        margin-top: 0px;
+        margin-left: 0px;
+        line-height: 10px;
+
+
+    
+    }
+    h4{
+        color: var(--color-grey-1);
+        font-size: var(--text-4);
+        margin-top: -20px;
+        margin-left: 90px;
+        line-height: 10px;
+
+
+    }
+    img{
+        margin-left: 160px;
+        margin-top: -80px;
+        width: 15px;
+
+    }
+
+
+}
+@media(min-width: 1440px){
+    .aside_container{
+        width: 480px;
+        height: 100%;
+        background-color: var(--color-grey-6);
+        gap: 2rem;
+        padding: 10px;
+        margin-top: -2640px;
+        margin-left: 920px;
+        overflow-y: auto;
+        overflow-x: none;
+    
+    }
+    aside > h2{
+        color: var(--color-grey-1);
+        font-size: var(--title-5);
+        margin-top: 20px;
+        margin-left: 15px;
+        background-color: var(--color-grey-6);
+        width: 220px;
+        height: 30px;
+    
+    }
+    aside > div > p{
         color: var(--color-grey-2);
-        line-height: 50px;
-        width: 80%;
-        margin-top: 90px;
-        margin-left: 50px;
+        font-size: var(--text-2);
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin: 15px;
+        gap: 10px;
+        background-color: var(--color-grey-6);
+        box-sizing: border-box;
+        border-bottom: 2px solid #F1F3F5;
+    }
+    h2{
+        color: var(--color-grey-1);
+        font-size: var(--title-5);
+
+    }
+    h3{
+        color: var(--color-grey-1);
+        font-size: var(--text-3);
+        width: 30%;
+    
+    }
+    h4{
+        color: var(--color-grey-1);
+        line-height: 30px;
+        font-size: var(--text-3);
+        width: 30%;
+    }
+    img{
+        margin-left: 370px;
+        margin-top: -60px;
+        width: 20px;
+
     }
 
 }
